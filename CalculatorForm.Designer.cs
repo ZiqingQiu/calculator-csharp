@@ -49,7 +49,7 @@
             this.BackspaceButton = new System.Windows.Forms.Button();
             this.ClearButton = new System.Windows.Forms.Button();
             this.ResultTextBox = new System.Windows.Forms.TextBox();
-            this.HistoryTestBox = new System.Windows.Forms.TextBox();
+            this.HistoryTextBox = new System.Windows.Forms.TextBox();
             this.ButtonTableLayoutPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -307,19 +307,19 @@
             this.ResultTextBox.TabIndex = 1;
             this.ResultTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // HistoryTestBox
+            // HistoryTextBox
             // 
-            this.HistoryTestBox.Location = new System.Drawing.Point(4, 15);
-            this.HistoryTestBox.Name = "HistoryTestBox";
-            this.HistoryTestBox.Size = new System.Drawing.Size(290, 37);
-            this.HistoryTestBox.TabIndex = 2;
+            this.HistoryTextBox.Location = new System.Drawing.Point(4, 15);
+            this.HistoryTextBox.Name = "HistoryTextBox";
+            this.HistoryTextBox.Size = new System.Drawing.Size(290, 37);
+            this.HistoryTextBox.TabIndex = 2;
             // 
             // CalculatorForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.LightGray;
             this.ClientSize = new System.Drawing.Size(302, 433);
-            this.Controls.Add(this.HistoryTestBox);
+            this.Controls.Add(this.HistoryTextBox);
             this.Controls.Add(this.ResultTextBox);
             this.Controls.Add(this.ButtonTableLayoutPanel);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -359,7 +359,7 @@
         private System.Windows.Forms.Button DivideButton;
         private System.Windows.Forms.Button BackspaceButton;
         private System.Windows.Forms.Button ClearButton;
-        private System.Windows.Forms.TextBox HistoryTestBox;
+        private System.Windows.Forms.TextBox HistoryTextBox;
     }
 }
 
