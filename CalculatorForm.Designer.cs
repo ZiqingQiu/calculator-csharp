@@ -99,7 +99,7 @@
             this.EqualsButton.TabIndex = 19;
             this.EqualsButton.Text = "=";
             this.EqualsButton.UseVisualStyleBackColor = false;
-            this.EqualsButton.Click += new System.EventHandler(this.OperatorButton_Click);
+            this.EqualsButton.Click += new System.EventHandler(this.EqualButton_Click);
             // 
             // DecimalButton
             // 

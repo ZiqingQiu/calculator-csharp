@@ -49,14 +49,23 @@ namespace COMP123_S2017_Lesson12B2
             {
                 return false;
             }
-            if ((_inputRecord[_inputRecord.Count - 1] == "+") || (_inputRecord[_inputRecord.Count - 1] == "-") || (_inputRecord[_inputRecord.Count - 1] == "X") || (_inputRecord[_inputRecord.Count - 1] == "÷"))
+
+            for(int i = (_inputRecord.Count - 1); i > 0; i--)
             {
-                return true;
+                if (_inputRecord[i] == "(" || _inputRecord[i] == ")")
+                {
+                    continue;
+                }
+                else if (_inputRecord[i] == "+" || _inputRecord[i] == "-" || _inputRecord[i] == "x" || _inputRecord[i] == "÷")
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
-            else 
-            {
-                return false;
-            }
+            return false;
         }
 
         private void UpDateLatestResult(double change, string operatortype)
@@ -209,6 +218,11 @@ namespace COMP123_S2017_Lesson12B2
             {
                 //replace it
                 _inputRecord[_inputRecord.Count - 1] = OperatorButton.Text;
+                if (OperatorButton.Text == "x" || OperatorButton.Text == "÷")  //add ()
+                {
+                    _inputRecord.Insert(0, "(");
+                    _inputRecord.Insert(_inputRecord.Count - 1, ")"); ;
+                }
             }
             else
             {
@@ -260,6 +274,15 @@ namespace COMP123_S2017_Lesson12B2
         {
             //HistoryTextBox: do nothing
             //ResultTextBox: clear last digit, if empty show 0
+            if (_currentInput.Count > 1)
+            {
+                _currentInput.RemoveAt((_currentInput.Count - 1));
+            }
+            else 
+            {
+                _currentInput[0] = "0";
+            }
+            ShowResultText();
             //logicview: do nothing
         }
 
@@ -269,10 +292,26 @@ namespace COMP123_S2017_Lesson12B2
         private void EqualButton_Click(object sender, EventArgs e)
         {
             //HistoryTextBox: clear history
-            //ResultTextBox: show latest result
+            _inputRecord.Clear();
+            ShowHistoryText();
+
             //logicview
             //  if previous is number, do result lastoper curreninput
             //  if previous is operator, do result lastoper result
+            if (IsLastInputOperator())
+            {
+                UpDateLatestResult(Convert.ToDouble(this.latestResult), _lastOperator);
+            }
+            else 
+            {
+                string cuurentEntireInputString = String.Join("", _currentInput.ToArray());
+                UpDateLatestResult(Convert.ToDouble(cuurentEntireInputString), _lastOperator);
+            }
+
+            //ResultTextBox: show latest result
+            _currentInput.Clear();
+            _currentInput.Add(Convert.ToString(latestResult));
+            ShowResultText();
         }
 
         /// <summary>
