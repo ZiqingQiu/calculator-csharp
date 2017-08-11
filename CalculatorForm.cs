@@ -68,6 +68,44 @@ namespace COMP123_S2017_Lesson12B2
             return false;
         }
 
+        private bool IsCurrentInputHasDecimal()
+        {
+            if (_currentInput.Count == 0)
+            {
+                return false;
+            }
+
+            for (int i = (_currentInput.Count - 1); i > 0; i--)
+            {
+                if (_currentInput[i] == ".")
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        //trim last zeros if decimal detected
+        private string TrimCurrentInput()
+        {
+            if (IsCurrentInputHasDecimal())
+            {
+                for (int i = (_currentInput.Count - 1); i > 0; i--)
+                {
+                    if (_currentInput[i] == "0")
+                    {
+                        _currentInput.RemoveAt(i);
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+            }
+            string cuurentEntireInputString = String.Join("", _currentInput.ToArray());
+            return cuurentEntireInputString;
+        }
+
         private void UpDateLatestResult(double change, string operatortype)
         {
             switch (operatortype)
@@ -194,7 +232,10 @@ namespace COMP123_S2017_Lesson12B2
             }
             else
             {
-                _currentInput.Add(calculatorButton.Text);
+                if (!IsCurrentInputHasDecimal())
+                {
+                    _currentInput.Add(calculatorButton.Text);
+                }
             }
             ShowResultText();
             //logicview: nothing
@@ -209,6 +250,7 @@ namespace COMP123_S2017_Lesson12B2
         private void OperatorButton_Click(object sender, EventArgs e)
         {
             Button OperatorButton = sender as Button; // downcasting
+            TrimCurrentInput();
             string cuurentEntireInputString = String.Join("", _currentInput.ToArray());
 
             //HistoryTextBox: 
