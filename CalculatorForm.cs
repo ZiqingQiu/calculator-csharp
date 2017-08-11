@@ -49,33 +49,99 @@ namespace COMP123_S2017_Lesson12B2
 
 
         /// <summary>
-        /// Handle digits 0-9 and decimals
+        /// Handle digits 1-9
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void CalculatorButton_Click(object sender, EventArgs e)
         {
-  
+            //HistoryTextBox: all do nothing
+            //ResultTextBox:
+            //      1-9 attach string, if 1 element and 0, replace it
+            //      0 if not first attach, otherwise keep "0"
+            //      . if not first attach, otherwise attach "0."
+
+            //logicview: nothing
+
         }
 
         /// <summary>
-        /// Handle operators add, substract, times, divide
+        /// Handle digit 0
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ZeroButton_Click(object sender, EventArgs e)
+        {
+            //HistoryTextBox: all do nothing
+            //ResultTextBox:
+            //      0 if not first attach, else keep "0"
+
+            //logicview: nothing
+
+        }
+
+        /// <summary>
+        /// Handle decimal
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void DecimalButton_Click(object sender, EventArgs e)
+        {
+            //HistoryTextBox: all do nothing
+            //ResultTextBox:
+            //      . if not first attach, else attach "0."
+
+            //logicview: nothing
+
+        }
+        /// <summary>
+        /// Handle operators +-X/
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void OperatorButton_Click(object sender, EventArgs e)
         {
+            //HistoryTextBox: 
+            //  if previous is digit, then attach the operator
+            //  if previous is operator, then replace the operator  
 
+            //ResultTextBox: show latest result
 
-
+            //logicview: calculate latest result
         }
 
 
         /// <summary>
-        /// Handle Clear, backspace
+        /// Handle Clear
         /// </summary>
-        private void InputChangeButton_Click()
-        { 
+        private void ClearButton_Click(object sender, EventArgs e)
+        {
+            //HistoryTextBox: clear string
+            //ResultTextBox: show 0
+            //logicview: result set to 0
+        }
+
+
+        /// <summary>
+        /// Handle BackSpace
+        /// </summary>
+        private void BackSpaceButton_Click(object sender, EventArgs e)
+        {
+            //HistoryTextBox: do nothing
+            //ResultTextBox: clear last digit, if empty show 0
+            //logicview: do nothing
+        }
+
+        /// <summary>
+        /// Handle Equal
+        /// </summary>
+        private void EqualButton_Click(object sender, EventArgs e)
+        {
+            //HistoryTextBox: clear history
+            //ResultTextBox: show latest result
+            //logicview
+            //  if previous is number, do result lastoper curreninput
+            //  if previous is operator, do result lastoper result
         }
 
 

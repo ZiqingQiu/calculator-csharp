@@ -49,6 +49,7 @@
             this.BackspaceButton = new System.Windows.Forms.Button();
             this.ClearButton = new System.Windows.Forms.Button();
             this.ResultTextBox = new System.Windows.Forms.TextBox();
+            this.HistoryTestBox = new System.Windows.Forms.TextBox();
             this.ButtonTableLayoutPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -109,7 +110,7 @@
             this.DecimalButton.TabIndex = 18;
             this.DecimalButton.Text = ".";
             this.DecimalButton.UseVisualStyleBackColor = false;
-            this.DecimalButton.Click += new System.EventHandler(this.CalculatorButton_Click);
+            this.DecimalButton.Click += new System.EventHandler(this.DecimalButton_Click);
             // 
             // ZeroButton
             // 
@@ -120,7 +121,7 @@
             this.ZeroButton.TabIndex = 17;
             this.ZeroButton.Text = "0";
             this.ZeroButton.UseVisualStyleBackColor = false;
-            this.ZeroButton.Click += new System.EventHandler(this.CalculatorButton_Click);
+            this.ZeroButton.Click += new System.EventHandler(this.ZeroButton_Click);
             // 
             // PlusMinusButton
             // 
@@ -278,9 +279,9 @@
             this.BackspaceButton.Name = "BackspaceButton";
             this.BackspaceButton.Size = new System.Drawing.Size(68, 53);
             this.BackspaceButton.TabIndex = 2;
-            this.BackspaceButton.Text = "⌫";
+            this.BackspaceButton.Text = "BS";
             this.BackspaceButton.UseVisualStyleBackColor = true;
-            this.BackspaceButton.Click += new System.EventHandler(this.OperatorButton_Click);
+            this.BackspaceButton.Click += new System.EventHandler(this.BackSpaceButton_Click);
             // 
             // ClearButton
             // 
@@ -291,7 +292,7 @@
             this.ClearButton.TabIndex = 0;
             this.ClearButton.Text = "C";
             this.ClearButton.UseVisualStyleBackColor = true;
-            this.ClearButton.Click += new System.EventHandler(this.OperatorButton_Click);
+            this.ClearButton.Click += new System.EventHandler(this.ClearButton_Click);
             // 
             // ResultTextBox
             // 
@@ -306,11 +307,19 @@
             this.ResultTextBox.TabIndex = 1;
             this.ResultTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
+            // HistoryTestBox
+            // 
+            this.HistoryTestBox.Location = new System.Drawing.Point(4, 15);
+            this.HistoryTestBox.Name = "HistoryTestBox";
+            this.HistoryTestBox.Size = new System.Drawing.Size(290, 37);
+            this.HistoryTestBox.TabIndex = 2;
+            // 
             // CalculatorForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.LightGray;
             this.ClientSize = new System.Drawing.Size(302, 433);
+            this.Controls.Add(this.HistoryTestBox);
             this.Controls.Add(this.ResultTextBox);
             this.Controls.Add(this.ButtonTableLayoutPanel);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -350,6 +359,7 @@
         private System.Windows.Forms.Button DivideButton;
         private System.Windows.Forms.Button BackspaceButton;
         private System.Windows.Forms.Button ClearButton;
+        private System.Windows.Forms.TextBox HistoryTestBox;
     }
 }
 
