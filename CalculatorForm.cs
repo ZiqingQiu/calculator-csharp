@@ -363,6 +363,10 @@ namespace COMP123_S2017_Lesson12B2
             //HistoryTextBox: do nothing
 
             //ResultTextBox: change [0] element
+            if (_currentInput.Count == 0)
+            {
+                return;
+            }
             if (_currentInput[0] == "-")
             {
                 _currentInput[0] = "+";

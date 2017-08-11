@@ -309,9 +309,11 @@
             // 
             // HistoryTextBox
             // 
+            this.HistoryTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.HistoryTextBox.Location = new System.Drawing.Point(4, 15);
+            this.HistoryTextBox.Multiline = true;
             this.HistoryTextBox.Name = "HistoryTextBox";
-            this.HistoryTextBox.Size = new System.Drawing.Size(290, 37);
+            this.HistoryTextBox.Size = new System.Drawing.Size(290, 40);
             this.HistoryTextBox.TabIndex = 2;
             // 
             // CalculatorForm
