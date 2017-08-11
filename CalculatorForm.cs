@@ -356,6 +356,33 @@ namespace COMP123_S2017_Lesson12B2
             ShowResultText();
         }
 
+        /// Handle +- reverse sign button
+        /// </summary>
+        private void ReverseSignButton_Click(object sender, EventArgs e)
+        {
+            //HistoryTextBox: do nothing
+
+            //ResultTextBox: change [0] element
+            if (_currentInput[0] == "-")
+            {
+                _currentInput[0] = "+";
+            }
+            else
+            {
+                if (_currentInput[0] == "+")
+                {
+                    _currentInput[0] = "-";
+                }
+                else
+                {
+                    _currentInput.Insert(0, "-");
+                }
+            }
+            ShowResultText();
+            //logicview: do nothing
+        }
+
+
         /// <summary>
         /// This is the event handler for the "Load" event
         /// </summary>

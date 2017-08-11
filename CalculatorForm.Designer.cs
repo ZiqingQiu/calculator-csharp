@@ -131,7 +131,7 @@
             this.PlusMinusButton.TabIndex = 16;
             this.PlusMinusButton.Text = "±";
             this.PlusMinusButton.UseVisualStyleBackColor = true;
-            this.PlusMinusButton.Click += new System.EventHandler(this.OperatorButton_Click);
+            this.PlusMinusButton.Click += new System.EventHandler(this.ReverseSignButton_Click);
             // 
             // PlusButton
             // 
