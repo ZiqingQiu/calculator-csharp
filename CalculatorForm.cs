@@ -23,6 +23,7 @@ namespace COMP123_S2017_Lesson12B2
         // PRIVATE INSTANCE VARIABLES
         List<String> _inputRecord;   //record every input from calculator, show in HistoryText
         List<String> _currentInput;   //record current input digits, show in ResultText
+        string _lastOperator;
         Double latestResult;  //record latestResult before currentInput followed by a operator
 
         // PUBLIC PROPERTIES
@@ -41,6 +42,46 @@ namespace COMP123_S2017_Lesson12B2
             latestResult = 0;
 
         }
+
+        private bool IsLastInputOperator()
+        {
+            if (_inputRecord.Count == 0)
+            {
+                return false;
+            }
+            if ((_inputRecord[_inputRecord.Count - 1] == "+") || (_inputRecord[_inputRecord.Count - 1] == "-") || (_inputRecord[_inputRecord.Count - 1] == "X") || (_inputRecord[_inputRecord.Count - 1] == "÷"))
+            {
+                return true;
+            }
+            else 
+            {
+                return false;
+            }
+        }
+
+        private void UpDateLatestResult(double change, string operatortype)
+        {
+            switch (operatortype)
+            {
+                case "+":
+                    latestResult += change;
+                break;
+                case "-":
+                    latestResult -= change;
+                break;
+                case "x":
+                    latestResult *= change;
+                break;
+                case "÷":
+                    latestResult /= change;
+                break;
+                default:
+                Debug.Write("Invalid Operatortype!");
+                break;
+            }
+
+        }
+
 
         /// <summary>
         /// This is the method show HistoryText
@@ -75,7 +116,6 @@ namespace COMP123_S2017_Lesson12B2
         {
             Application.Exit();
         }
-
 
         /// <summary>
         /// Handle digits 1-9
@@ -151,6 +191,7 @@ namespace COMP123_S2017_Lesson12B2
             //logicview: nothing
 
         }
+
         /// <summary>
         /// Handle operators +-X/
         /// </summary>
@@ -159,23 +200,38 @@ namespace COMP123_S2017_Lesson12B2
         private void OperatorButton_Click(object sender, EventArgs e)
         {
             Button OperatorButton = sender as Button; // downcasting
+            string cuurentEntireInputString = String.Join("", _currentInput.ToArray());
+
             //HistoryTextBox: 
-            //  if previous is digit, then attach the operator
-            //  if previous is operator, then replace the operator  
-            //  if previous is null, then add 0 operator 
-            if (_inputRecord.Count == 0) //null
+            //  if previous is digit or null, then add _currentInput + operator 
+            //  if IsLastInputOperator, replace the operator  
+            if (IsLastInputOperator() && (_currentInput.Count == 0))  
             {
-                _inputRecord.Add("0 ");
-                _inputRecord.Add(OperatorButton.Text + " ");
+                //replace it
+                _inputRecord[_inputRecord.Count - 1] = OperatorButton.Text;
             }
-            else if (_inputRecord[_inputRecord.Count - 1] == "")  //last input is operator
+            else
             {
+                //HistoryTextBox: 
+                _inputRecord.Add(cuurentEntireInputString);
+                //  add operator
+                if (OperatorButton.Text == "x" || OperatorButton.Text == "÷")  //add ()
+                {
+                    _inputRecord.Insert(0, "(");
+                    _inputRecord.Add(")");
+                }
+                _inputRecord.Add(OperatorButton.Text);
+                //logicview: calculate latest result
+                UpDateLatestResult(Convert.ToDouble(cuurentEntireInputString), _lastOperator);                
+
+                //ResultTextBox: show latest result
+                _currentInput.Clear();
+                _currentInput.Add(Convert.ToString(this.latestResult));
+                ShowResultText();
+                _currentInput.Clear(); //clear for next input
             }
-
-
-            //ResultTextBox: clear result text, show latest result
-
-            //logicview: calculate latest result
+            _lastOperator = OperatorButton.Text;
+            ShowHistoryText();
         }
 
 
@@ -186,7 +242,8 @@ namespace COMP123_S2017_Lesson12B2
         {
             //HistoryTextBox: clear string
             _inputRecord.Clear();
-
+            _lastOperator = "+";
+            ShowHistoryText();
             //ResultTextBox: show 0
             _currentInput.Clear();
             latestResult = 0;
@@ -226,6 +283,9 @@ namespace COMP123_S2017_Lesson12B2
         private void CalculatorForm_Load(object sender, EventArgs e)
         {
             _inputRecord.Clear();
+            _lastOperator = "+";
+
+
             latestResult = 0;
             _currentInput.Add(Convert.ToString(latestResult));
             ShowResultText();
