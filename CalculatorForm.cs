@@ -336,8 +336,12 @@ namespace COMP123_S2017_Lesson12B2
         /// </summary>
         private void EqualButton_Click(object sender, EventArgs e)
         {
+            /*
             //HistoryTextBox: clear history
-            _inputRecord.Clear();
+            _inputRecord.Clear();*/
+            //qzq
+            string cuurentEntireInputString = String.Join("", _currentInput.ToArray());
+            _inputRecord.Add(cuurentEntireInputString);
 
             //logicview
             //  if previous is number, do result lastoper curreninput
@@ -348,17 +352,19 @@ namespace COMP123_S2017_Lesson12B2
             }
             else 
             {
-                string cuurentEntireInputString = String.Join("", _currentInput.ToArray());
                 UpDateLatestResult(Convert.ToDouble(cuurentEntireInputString), _lastOperator);
             }
 
             //ResultTextBox: show latest result
             _currentInput.Clear();
             _currentInput.Add(Convert.ToString(latestResult));
+
             ShowResultText();
             _currentInput.Clear();
             _currentInput.Add("0");
 
+            //HistoryTextBox: add result
+            _inputRecord.Add("=");
             _inputRecord.Add(Convert.ToString(latestResult));
             ShowHistoryText();
         }
