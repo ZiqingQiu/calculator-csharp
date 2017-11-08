@@ -17,3 +17,5 @@ Using C# and windows form API to build windows like calculator app
 
 
 ![screenshot image](/screenshot/screenshot.png)
+
+[![HitCount](http://hits.dwyl.io/ziqingqiu/calculator.svg)](http://hits.dwyl.io/ziqingqiu/calculator)
